@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card1 {
+            margin: 10% auto;
+            text-align: center;
+            padding: 4% 0%;
+            width: 25%;
+            background-color: #9CC3D5FF;
+            color: black;
+            border: 2px solid #fafafa;
+            border-radius: 8%;
+        }
+
+        .tag {
+            padding: 1%;
+        }
+        .part {
+            padding: 4%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="card1">
+            <div class="part1 part">
+                <h2 class="tag city">Pune, India</h2>
+                <p class="tag" id="timeline">
+                    <span id="day">Wed</span>|
+                    <span id="month">OCT</span>
+                    <span id="to-date">25</span>|
+                    <span id="hours">4</span>:<span id="minutes">45</span>
+                    <span id="am-pm">AM</span>
+                </p>
+            </div>
+            <div class="part2 part">
+                <h2 class="tag temp">{%tempVal%}</h2>
+                <p class="tag minmax">Min {%tempmin%} | Max {%tempmax%}</p>
+            </div>
+        </div>
+
+    </div>
+    <!-- Javascript -->
+    <script>
+        
+
+        const currentDate = document.getAnimations("timeline");
+        const tempStatus = "Clouds";
+
+        const getCurrentDay = function () {
+            const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let currentDate = new Date();
+            let day = weekday[currentDate.getDay()];
+            console.log(day)
+            document.getElementById("day").innerHTML = day;
+        };
+
+
+        const getcurrentTime = function () {
+            var Months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var d = new Date();
+
+            document.getElementById("month").innerHTML = Months[d.getMonth()];
+            document.getElementById("to-date").innerHTML = d.getDate();
+
+            document.getElementById("minutes").innerHTML = d.getMinutes();
+            if (d.getHours() >= 12) {
+                document.getElementById("hours").innerHTML = d.getHours() - 12;
+                document.getElementById("am-pm").innerHTML = "PM";
+            } else {
+                document.getElementById("hours").innerHTML = d.getHours();
+                document.getElementById("am-pm").innerHTML = "AM";
+            }
+        }
+        getCurrentDay();
+        getcurrentTime();
+        
+
+    </script>
+</body>
+
+</html>
